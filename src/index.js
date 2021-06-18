@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import Button from '@material-ui/core/Button';
 import { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
+import App from './App';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +12,6 @@ import {
   useHistory
 } from "react-router-dom";
 import { TextRotateVerticalRounded } from '@material-ui/icons';
-import axios from 'axios';
 
 function Index() {
   return(
@@ -58,8 +58,8 @@ function DynamicPageNameInfo(){
 function FirstPageComponent () {
   const getDataFromApi = async () => {
     try{
-      const response = await axios.get('https://swapi.dev/api/people/1/')
-      console.log(response.data)
+      const response = await axios.get( 'https://pokeapi.co/api/v2/pokemon/ditto')
+      console.log(response)
     } catch (error) {
       console.log(error)
     }
