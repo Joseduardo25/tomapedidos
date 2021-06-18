@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Button from '@material-ui/core/Button';
+import { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,8 +11,9 @@ import {
   useHistory
 } from "react-router-dom";
 import { TextRotateVerticalRounded } from '@material-ui/icons';
+import axios from 'axios';
 
-function FirstPagecomponent() {
+function Index() {
   return(
     <ul>
       <li>
@@ -53,18 +55,37 @@ function DynamicPageNameInfo(){
   )
 }
 
+function FirstPageComponent () {
+  const getDataFromApi = async () => {
+    try{
+      const response = await axios.get('https://swapi.dev/api/people/1/')
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect (() => {
+    getDataFromApi()
+  }, [])
+  return(
+    <div>
+      <GoBack/>
+          <Button variant="contained" color="primary">
+            Soy la primera pagina
+          </Button>
+    </div>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
         <Route exact path="/">
-          <FirstPagecomponent/>
+          <Index />
         </Route>
         <Route exact path="/first-page">
-          <GoBack/>
-          <Button variant="contained" color="primary">
-            Soy la primera pagina
-          </Button>
+          <FirstPageComponent/>
         </Route>
         <Route exact path="/first-page/:query">
           <GoBack/>
@@ -87,5 +108,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
  
