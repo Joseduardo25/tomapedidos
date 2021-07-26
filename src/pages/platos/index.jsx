@@ -1,11 +1,12 @@
 import React from 'react';
+import Layout from '../../components/layout';
 
 function Platos () {
   return(
-    <div>
-      Platos
-    </div>
+    <Layout>
+      Pagina de Platos
+    </Layout>
   )
 }
 
-export default Platos;
+export default Platos

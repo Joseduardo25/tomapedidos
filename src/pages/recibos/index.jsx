@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../../components/layout';
 
 function Recibos () {
   return(
-    <div>
-      Recibos
-    </div>
+    <Layout>
+      pagina de recibos
+    </Layout>
   )
 }
 

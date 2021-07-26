@@ -1,10 +1,11 @@
 import React from 'react';
+import Layout from '../../components/layout';
 
 function Usuarios () {
   return(
-    <div>
-      Usuarios
-    </div>
+    <Layout>
+      pagina de usuarios
+    </Layout>
   )
 }
 
