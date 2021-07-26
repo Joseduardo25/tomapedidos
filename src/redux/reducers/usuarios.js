@@ -1,8 +1,8 @@
 const initialState = {
-  nombrePlato : 'Arroz con Pollo'
+  usuarios : []
 }
 
-export default function platos(state = initialState, action) {
+export default function usuarios(state = initialState, action) {
   switch (action.type) {
     case 'MY__ACTION_TYPE':
       return action.payload
