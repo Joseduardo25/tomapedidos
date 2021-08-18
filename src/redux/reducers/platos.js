@@ -1,11 +1,18 @@
+import * as TYPE from '../types/platos' 
+
 const initialState = {
-  nombrePlato : 'Arroz con Pollo'
+  data: []
 }
 
 export default function platos(state = initialState, action) {
   switch (action.type) {
-    case 'MY__ACTION_TYPE':
-      return action.payload
+    case TYPE.ADD_PLATO:
+      return {
+        ...state,
+        data: action.data,
+      }
+    default:
+      return state
   }
   return state; 
 }

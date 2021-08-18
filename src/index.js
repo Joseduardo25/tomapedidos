@@ -9,13 +9,7 @@ import configureStore from './redux/store';
 import history from './utils/history'
 import './style.css'
 
-const initialState = {
-  platos: [
-    {
-      name: 'Arroz con pollo'
-    }
-  ]
-};
+const initialState = {};
 const store = configureStore(initialState, history);
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
 const initialState = {
-  recibos : []
+  recibos : null
 }
 
 export default function recibos(state = initialState, action) {
