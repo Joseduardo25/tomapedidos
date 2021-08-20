@@ -1,65 +1,26 @@
-import React, { useState }  from 'react';
+import React from 'react';
+import Button from '@material-ui/core/Button';
 import { useSelector, useDispatch } from 'react-redux';
-import Layout from '../../components/layout';
-import * as TYPE from '../../redux/types/platos'
+import Layout from '../../components/layout'; 
+import * as platosActions from '../../redux/actions/platos'
 
-function Platos () {
-  const [listaPlatos, setListaPlatos] = useState([])
-
+function Platos() {
   const statePlatos = useSelector((state) => state.platos)
   const dispatch = useDispatch()
 
   console.log(statePlatos)
 
-  const onAddPlato = () =>{
-    const newPlatosData = statePlatos.data
-    newPlatosData.push('arroz con pollo')
-
-    dispatch({
-      type: TYPE.ADD_PLATO,
-      data: newPlatosData
-    })
+  const getDataFromAPI = () => {
+    const plato = 'arroz con pollo'
+    dispatch(platosActions.fetchPlatosData(plato))
   }
 
-  const onAddPlatoHook = () => {
-    const newPlatosData = [...listaPlatos]
-    newPlatosData.push('Arroz con pollo')
-    setListaPlatos(newPlatosData)
-  }
-  console.log(listaPlatos)
- 
   return(
     <Layout>
       Pagina de Platos
-      <h2>Agregado con REDUX</h2>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div>
-          lista de Platos
-        </div>
-        <br />
-          <button onClick={onAddPlato}>Agregar Platos</button>
-        <div>
-          <ul>
-            {statePlatos.data.map((plato, i) => (
-            <li key={i}>{plato}</li>
-            ))}
-          </ul>
-        </div>
-        <hr />
-        <h2>Agregado con HOOK USESTATE</h2>
-        <div>
-          lista de Platos
-        </div>
-        <br />
-          <button onClick={onAddPlatoHook}>Agregar Platos</button>
-        <div>
-          <ul>
-            {listaPlatos.map((plato, i) => (
-            <li key={i}>{plato}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <Button onClick={getDataFromAPI} variant="contained" color="primary">
+         Agregar
+      </Button>
     </Layout>
   )
 } 
