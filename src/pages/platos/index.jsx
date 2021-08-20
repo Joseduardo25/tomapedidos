@@ -8,11 +8,12 @@ function Platos() {
   const statePlatos = useSelector((state) => state.platos)
   const dispatch = useDispatch()
 
-  console.log(statePlatos)
+  const getDataFromAPI = () => {    
+    dispatch(platosActions.fetchPlatosData())
+  }
 
-  const getDataFromAPI = () => {
-    const plato = 'arroz con pollo'
-    dispatch(platosActions.fetchPlatosData(plato))
+  const renderPokemonesMap = () => {
+    return statePlatos.data.map((pokemon, i) => <div key={i}>{pokemon.name}</div>)
   }
 
   return(
@@ -21,6 +22,10 @@ function Platos() {
       <Button onClick={getDataFromAPI} variant="contained" color="primary">
          Agregar
       </Button>
+      <br /><br />
+      <div style={{ display: 'flex', flexDirection: 'column'}}>
+      {renderPokemonesMap()}
+      </div>
     </Layout>
   )
 } 
