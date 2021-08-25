@@ -1,6 +1,9 @@
 import { Button, Container, CssBaseline, makeStyles, TextField, Typography } from '@material-ui/core'
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux';
+import * as authReducer from '../../redux/actions/auth'
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -22,16 +25,19 @@ function Login() {
   const classes = useStyles()
   const { register, handleSubmit, formState: { errors } } = useForm()
   
+  const dispatch = useDispatch()
+
   const onSubmit = (data) => {
-    console.log(data)
+    dispatch(authReducer.doLogin(data))
   }
+  
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          {process.env.REACT_APP_URL_API}
+          Toma Pedidos Login
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className={classes.form} noValidate>
           <TextField
@@ -39,10 +45,10 @@ function Login() {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Nombre de usuario"
+            name="username"
+            autoComplete="username"
             autoFocus
             {...register('email', { required: true })}
           />
@@ -68,7 +74,7 @@ function Login() {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Ingresar
           </Button>
         </form>
       </div>    

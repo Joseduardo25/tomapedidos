@@ -1,0 +1,1 @@
+export const DO_AUTHENTICATED = 'DO_AUTHENTICATED'
